@@ -15,52 +15,30 @@
             <h2 class="result-title">学習の成果</h2>
             <div class="comment">
                 <h3 class="comment-title">本日の学習コメント</h3>
-                <!-- <form action="">
-                    <textarea name="" id="" cols="50" rows="3" placeholder="今日はテキスト第二章まで進めた！">
-                    
-                    </textarea>
-                </form> -->
-                <!-- <p style="white-space: pre-line;">{{ message }}あ</p> -->
-                <textarea v-model="comment" placeholder="ここに記入">{{message}}</textarea>
+                <textarea v-model="posted_text" placeholder="ここに記入"></textarea>
             </div>
             <div class="result-box">
                 <div class="study-hours">
                     <h3 class="study-hours-title">学習時間</h3>
-                        <select name="hours">
-                            <option value="1">1時間</option>
-                            <option value="2">2時間</option>
-                            <option value="3">3時間</option>
-                            <option value="4">4時間</option>
-                            <option value="5">5時間</option>
-                            <option value="6">6時間</option>
-                            <option value="7">7時間</option>
-                            <option value="8">8時間</option>
-                            <option value="9">9時間</option>
-                            <option value="10">10時間</option>
-                            <option value="11">11時間</option>
-                            <option value="12">12時間</option>
+                        <select v-model="selected">
+                            <option v-for="hour in hours" :key="hour">{{hour}}時間</option>
                         </select>
                 </div>
+                
                     <button class="post-btn" v-on:click="post">投稿する</button>
                     <div class="post-result">{{posted}}</div>
-                    <button class="tweet-btn">ツイートする</button>
+                    <button class="tweet-btn" v-on:click="tweet">ツイートする</button>
+                    
+
             </div>
         </section>
         <section class="past">
             <h2 class="past-title">過去の投稿</h2>
             <ul class="log-list">
                 <li v-for="post in posts">
-                    <div class="log">
-                        <p class="date"><span>{{date}}</span></p>
-                        <p class="past-comment"><span>{{comment}}</span></p>
-                        <div class="past-hours">
-                            <h3 class="hours-title"><span>{{hours}}</span></h3>
-                            <p>6時間</p>
-                        </div>
-                    </div>
+                    {{ post.text }}{{ now }}
                 </li>
             </ul>
-
         </section>
         
     </div>
@@ -70,20 +48,36 @@
 export default {
     data() {
         return {
-            comment: "",
-            hours:"hour",
-            message:"",
-            comments:[],
+            selected:"1時間",
+            hours:[1,2,3,4,5,6,7,8,9,10],
             posted:"",
             posts:[],
+            posted_text:"",
+            // today:"00:00:00"
         };
     },
     methods:{
         post: function(){
             this.posted = "投稿しました"
-            console.log("テスト");
-        }
-        
+            // console.log("テスト");
+            this.posts.push({text:this.posted_text})
+            let date = new Date();  //new演算子でオブジェクトのインスタンスを生成
+            //現在時刻の取得 **ここからはjavascript**
+            this.now = date.getHours() + ":"
+            + date.getMinutes() + ":" +
+            date.getSeconds();
+        },
+        // create: function(){
+        //     const hour = 1
+        //     for(let i = 0; i < 5; i++){
+        //         this.hours.push(hour + i)
+        //     }
+        //     console.log("テスト２");
+        // },
+        tweet: function(){
+            this.posted = "ツイートしました"
+            console.log("テスト３");
+        },
     },
     
 }
