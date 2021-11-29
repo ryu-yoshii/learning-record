@@ -21,7 +21,7 @@
                 <div class="study-hours">
                     <h3 class="study-hours-title">学習時間</h3>
                         <select v-model="selected">
-                            <option v-for="hour in hours" :key="hour">{{hour}}時間</option>
+                            <option v-for="hour in hours" :key="hour.hour_id">{{hour}}時間</option>
                         </select>
                 </div>
                 
@@ -36,7 +36,7 @@
             <h2 class="past-title">過去の投稿</h2>
             <ul class="log-list">
                 <li v-for="post in posts">
-                    {{ post.text }}{{ now }}
+                    {{ post.text }}{{ post.hour }}
                 </li>
             </ul>
         </section>
@@ -53,27 +53,32 @@ export default {
             posted:"",
             posts:[],
             posted_text:"",
-            // today:"00:00:00"
+            times:[],
         };
     },
     methods:{
         post: function(){
             this.posted = "投稿しました"
             // console.log("テスト");
-            this.posts.push({text:this.posted_text})
             let date = new Date();  //new演算子でオブジェクトのインスタンスを生成
             //現在時刻の取得 **ここからはjavascript**
-            this.now = date.getHours() + ":"
-            + date.getMinutes() + ":" +
-            date.getSeconds();
+            this.now = date.getFullYear() + "年"
+            + (Number(date.getMonth()) + 1) + "月" +
+            date.getDate() + "日" 
+            +date.getHours() + "時"
+            +date.getMinutes() + "分";
+
+            const  post_object = {
+                text:this.posted_text,
+                hour:this.now
+            }
+            this.posts.push(post_object)
+            console.log(this.posts)
+            // 勉強時間の取得
+            // this.hours.push({hour:this.hour})
+            // 更新時刻の取得
+            
         },
-        // create: function(){
-        //     const hour = 1
-        //     for(let i = 0; i < 5; i++){
-        //         this.hours.push(hour + i)
-        //     }
-        //     console.log("テスト２");
-        // },
         tweet: function(){
             this.posted = "ツイートしました"
             console.log("テスト３");
