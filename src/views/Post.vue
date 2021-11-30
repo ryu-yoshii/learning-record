@@ -36,7 +36,7 @@
             <h2 class="past-title">過去の投稿</h2>
             <ul class="log-list">
                 <li v-for="post in posts">
-                    {{ post.text }}{{ post.hour }}
+                    {{ post.text }}{{ post.hour }}{{post.time}}
                 </li>
             </ul>
         </section>
@@ -48,12 +48,13 @@
 export default {
     data() {
         return {
-            selected:"1時間",
+            selected:"",
             hours:[1,2,3,4,5,6,7,8,9,10],
             posted:"",
             posts:[],
             posted_text:"",
-            times:[],
+            // times:[],
+            hour:""
         };
     },
     methods:{
@@ -66,12 +67,11 @@ export default {
             date.getDate() + "日" 
             +date.getHours() + "時"
             +date.getMinutes() + "分";
-            // 勉強時間の取得
-            // this.time = 
+            // post_objectオブジェクトの生成
             const  post_object = {
                 text:this.posted_text,
-                hour:this.now
-                
+                hour:this.now,
+                time:this.selected
             }
             this.posts.push(post_object)
             
