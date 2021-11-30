@@ -59,7 +59,6 @@ export default {
     methods:{
         post: function(){
             this.posted = "投稿しました"
-            // console.log("テスト");
             let date = new Date();  //new演算子でオブジェクトのインスタンスを生成
             //現在時刻の取得 **ここからはjavascript**
             this.now = date.getFullYear() + "年"
@@ -67,16 +66,14 @@ export default {
             date.getDate() + "日" 
             +date.getHours() + "時"
             +date.getMinutes() + "分";
-
+            // 勉強時間の取得
+            // this.time = 
             const  post_object = {
                 text:this.posted_text,
                 hour:this.now
+                
             }
             this.posts.push(post_object)
-            console.log(this.posts)
-            // 勉強時間の取得
-            // this.hours.push({hour:this.hour})
-            // 更新時刻の取得
             
         },
         tweet: function(){
