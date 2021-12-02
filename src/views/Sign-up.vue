@@ -15,13 +15,13 @@
         <h2 class="sign-up-title">新規登録</h2>
         <form class="mail-form form">
             <label for="email">メールアドレス</label>
-            <input type="email" id="email" >
+            <input type="email" id="email" v-model="mailaddress"/>
         </form>
         <form class="pass-form form">
             <label for="password">パスワード</label>
-            <input type="password"  id="password" >
+            <input type="password"  id="password" v-model="password"/>
         </form>
-        <button id="sign-up-btn">登録</button>
+        <button id="sign-up-btn" @click="signUp">登録</button>
         </div>
     </div> 
     <footer>
@@ -34,6 +34,17 @@
 <script>
 export default {
     // layout: 'default'
+    methods:{
+        signUp:function(){
+            firebase.auth().createUserWithEmailAndPassword(this.mailaddress, this.password)
+            .then(
+                // 成功時の処理
+            )
+            .catch(
+                // 失敗時の処理
+            )
+        }
+    }
 }
 </script>
 <style lang="">
