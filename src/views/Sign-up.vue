@@ -6,9 +6,9 @@
         Learning  records
         </h1>
         <ul id="header-list">
-            <li><a href="">login</a></li>
-            <li><a href="">post</a></li>
-            <li><a href="">graph</a></li>
+            <li><router-link to="/">login</router-link></li>
+            <li><router-link to="/Post">post</router-link></li>
+            <li><router-link to="/graph">graph</router-link></li>
         </ul>
     </header>
         <div id="sign-up">
@@ -23,7 +23,12 @@
         </form>
         <button id="sign-up-btn">登録</button>
         </div>
-    </div>  
+    </div> 
+    <footer>
+    <p>
+        <small>&copy;2021</small>
+    </p>
+    </footer>
 </div>
 </template> 
 <script>

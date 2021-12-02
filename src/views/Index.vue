@@ -7,15 +7,15 @@
         Learning  records
         </h1>
         <ul id="header-list">
-          <li><a href="">login</a></li>
-          <li><a href="">post</a></li>
-          <li><a href="">graph</a></li>
+            <li><router-link to="/">login</router-link></li>
+            <li><router-link to="/Post">post</router-link></li>
+            <li><router-link to="/graph">graph</router-link></li>
         </ul>
     </header>
     <div class="login-content">
         <ul id="login-btn-box">
-            <li id="login-btn"><a href="">Login</a></li>
-            <li id="login-btn"><a href="">sign up</a></li>
+            <li id="login-btn"><router-link to="/">Login</router-link></li>
+            <li id="login-btn"><router-link to="/Sign-up">sign up</router-link></li>
         </ul>
     </div>
     <footer>

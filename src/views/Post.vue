@@ -1,16 +1,16 @@
 <template lang="ja">
 <div>
     <div id="post-wrapper">
-    <header id="header">
-        <h1 id="title">
-        Learning  records
-        </h1>
-        <ul id="header-list">
-            <li><a href="">login</a></li>
-            <li><a href="">post</a></li>
-            <li><a href="">graph</a></li>
-        </ul>
-    </header>
+        <header id="header">
+            <h1 id="title">
+            Learning  records
+            </h1>
+            <ul id="header-list">
+                <li><router-link to="/">login</router-link></li>
+                <li><router-link to="/Post">post</router-link></li>
+                <li><router-link to="/graph">graph</router-link></li>
+            </ul>
+        </header>
         <section class="result">
             <h2 class="result-title">学習の成果</h2>
             <div class="comment">
@@ -28,8 +28,6 @@
                     <button class="post-btn" v-on:click="post">投稿する</button>
                     <div class="post-result">{{posted}}</div>
                     <button class="tweet-btn" v-on:click="tweet">ツイートする</button>
-                    
-
             </div>
         </section>
         <section class="past">
@@ -40,8 +38,12 @@
                 </li>
             </ul>
         </section>
-        
     </div>
+    <footer>
+        <p>
+            <small>&copy;2021</small>
+        </p>
+    </footer>
 </div>
 </template>
 <script>
@@ -53,7 +55,6 @@ export default {
             posted:"",
             posts:[],
             posted_text:"",
-            // times:[],
             hour:""
         };
     },
